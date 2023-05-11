@@ -13,7 +13,7 @@ def handle_books():
     db.session.add(new_book)
     db.session.commit()
 
-    return make_response(f"Book {new_book.title} successfully created", 201)
+    return make_response(jsonify(f"Book {new_book.title} successfully created"), 201)
 
 @books_bp.route("", methods=["GET"])
 def read_all_books():
