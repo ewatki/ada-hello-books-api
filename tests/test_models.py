@@ -108,3 +108,5 @@ def test_from_dict_with_extra_keys():
     # Assert
     assert new_book.title == "New Book"
     assert new_book.description == "The Best!"
+
+    
