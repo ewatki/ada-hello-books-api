@@ -10,12 +10,19 @@ class Book(db.Model):
 
 
     def to_dict(self): 
-        book_as_dict = {}
-        book_as_dict["id"] = self.id
-        book_as_dict["title"] = self.title
-        book_as_dict["description"] = self.description
+        book_dict = {
+            "id": self.id,
+            "title": self.title,
+            "description": self.description
+        }
+        if self.author:
+            book_dict["author"] = self.author.name
 
-        return book_as_dict
+        if self.genres:
+            genre_names = [genre.name for genre in self.genres]
+            book_dict["genres"] = genre_names
+
+        return book_dict
 
     @classmethod 
     def from_dict(cls, book_data): 
